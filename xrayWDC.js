@@ -2,7 +2,7 @@
  
 const config = {
     clientId: "0oa2zoorwstYHgpO44x7",
-    redirectUri: "https://atlas-wdc-qa.azurewebsites.net/",
+    redirectUri: "https://hpurvis-traction.github.io/xray-wdc/xrayWDC.html",
     authUrl: "https://dev-580656.okta.com/oauth2/default/v1",
     baseUrl: "https://xray-qa-api.azurewebsites.net/api/",
     version: "20210427",
