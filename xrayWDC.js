@@ -13,6 +13,7 @@ const config = {
 //
 // This function parses the auth code in the URI if available
 $(document).ready(function() {
+    console.log("got here");
     const accessToken = isTokenValid(sessionStorage.getItem("access_token")) 
         ? sessionStorage.getItem("access_token")
         : isTokenValid(tableau.password) 
