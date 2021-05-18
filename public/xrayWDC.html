@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>X-Ray</title>
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <base href="http://localhost:8888/">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js" type="text/javascript"></script>
+    <script src="xrayWDC.js" type="text/javascript"></script>
+    <script src="libraries/jwt-decode/jwt-decode.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+  <div class="section" style="margin: auto; text-align: center; margin-top: 50px; max-width: 300px">
+
+    <!-- View if not signed in -->
+    <p class="notsignedin">You are not signed in, please click below to sign in to your Xray Okta account.</p>
+    <button class="notsignedin" id="connectbutton" type="button" style="margin: auto;">Login with Okta</button>
+    
+    <!-- View once signed in -->
+    <form class="signedin">
+      <div style="margin: 10px;">Scan Id: <input id="scanId" type="number" required></div>
+      <button class="btn btn-success" id="submitButton" type="submit" style="margin: auto;">Get X-Ray Object Counts</button>
+    </form>
+
+  </div>
+</body>
+
+</html>

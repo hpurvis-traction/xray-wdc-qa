@@ -1,0 +1,13 @@
+{
+  "name": "webdataconnector",
+  "version": "1.0.0",
+  "description": "Connect to xray web data from Tableau.",
+  "author": "Heather Purvis <hpurvis@tractionondemand.com>",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "jwt-decode": "^3.1.2",
+    "express": "^4.17.1"
+  }
+}
