@@ -13,7 +13,6 @@ const qaConfig = {
 //
 // This function parses the auth code in the URI if available
 $(document).ready(function() {
-    console.log("got here");
     const accessToken = isTokenValid(sessionStorage.getItem("access_token")) 
         ? sessionStorage.getItem("access_token")
         : isTokenValid(tableau.password) 
@@ -105,7 +104,6 @@ function isTokenValid(accessToken, deleteIfInvalid) {
         } finally {
             if (new Date(expiry) > new Date()) {
                 isValid = true;
-                console.log("accessToken", accessToken);
             } else if (deleteIfInvalid) {
                 tableau.password = null;
                 sessionStorage.setItem("access_token", null);       
@@ -118,7 +116,6 @@ function isTokenValid(accessToken, deleteIfInvalid) {
 // This function toggles the label shown depending
 // on whether or not the user has been authenticated
 function updateUIWithAuthState(hasAuth) {
-    console.log("updateUIWithAuthState, hasauth:", hasAuth);
     if (hasAuth) {
         $(".notsignedin").css("display", "none");
         $(".signedin").css("display", "block");
