@@ -1,8 +1,8 @@
 // Web Data Connector From Xray to Tableau
  
-const config = {
+const qaConfig = {
     clientId: "0oa2zoorwstYHgpO44x7",
-    redirectUri: "https://hpurvis-traction.github.io/xray-wdc/xrayWDC.html",
+    redirectUri: "https://hpurvis-traction.github.io/xray-wdc/index.html",
     authUrl: "https://dev-580656.okta.com/oauth2/default/v1",
     baseUrl: "https://xray-qa-api.azurewebsites.net/api/",
     version: "20210427",
@@ -31,11 +31,11 @@ $(document).ready(function() {
         doAuthRedirect();
     });
     
-    $("#submitButton").click(function () {
+    $("#getObjectCounts").click(function () {
         let scanId = document.getElementById("scanId").value;
         tableau.connectionData = JSON.stringify(
             {
-                "baseUrl": config.baseUrl,
+                "baseUrl": qaConfig.baseUrl,
                 "endpoint": "scans/" + scanId + "/recordCountByObject",
             }
         );
@@ -51,11 +51,11 @@ async function doAuthRedirect() {
         await generatePKCEChallenge();
     }
     
-    const url = config.authUrl + "/authorize"
-                + "?client_id=" + config.clientId 
+    const url = qaConfig.authUrl + "/authorize"
+                + "?client_id=" + qaConfig.clientId 
                 + "&code_challenge=" + sessionStorage.getItem("code_challenge") 
                 + "&code_challenge_method=S256" 
-                + "&redirect_uri=" + encodeURI(config.redirectUri)
+                + "&redirect_uri=" + encodeURI(qaConfig.redirectUri)
                 + "&response_type=code"
                 + "&state=CUbOZOUl7scZghOjraJ6SMUffH3ZZsr8EEQhpizplub856eM8GyUIVIcpkvGYtsf" // TODO
                 + "&scope=openid%20offline_access";
@@ -65,7 +65,7 @@ async function doAuthRedirect() {
 
 function getAccessToken(authCode) {
     $.ajax({
-        url: config.authUrl + "/token",
+        url: qaConfig.authUrl + "/token",
         type: "POST",
         headers: {
             "accept": "application/json",
@@ -74,8 +74,8 @@ function getAccessToken(authCode) {
         },
         processData: false,
         data: "grant_type=authorization_code" 
-            + "&client_id=" + config.clientId 
-            + "&redirect_uri=" + encodeURI(config.redirectUri)
+            + "&client_id=" + qaConfig.clientId 
+            + "&redirect_uri=" + encodeURI(qaConfig.redirectUri)
             + "&code=" + authCode
             + "&code_verifier=" + sessionStorage.getItem("code_verifier")
             + "&scope=openid%20offline_access",
@@ -152,7 +152,6 @@ function generateVerifier(length) {
     return result.join("");
 }
 
-// Can't remember what this does
 function sha256(plain) { 
     // returns promise ArrayBuffer
     const encoder = new TextEncoder();
@@ -210,14 +209,6 @@ myConnector.init = function(initCallback) {
         }
     }
 }
-
-// TODO implement refresh token storage when we can get a refresh token
-// myConnector.setConnection = function(refresh_token, user_id, days) {
-//     const connData = [refresh_token, user_id, days];
-//     tableau.connectionData = JSON.stringify(connData);
-//     tableau.connectionName = 'Fitbit Activity'; // name the data source. This will be the data source name in Tableau
-//     tableau.submit();
-// };
 
 myConnector.getSchema = function (schemaCallback) {
     const cols = [{
