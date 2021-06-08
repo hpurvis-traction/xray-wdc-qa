@@ -24,12 +24,11 @@ $(document).ready(function() {
     const authCode = getAuthCode();        
     if (authCode && !accessToken) {
         getAccessToken(authCode);
-        document.getElementById("errorMessage").innerHTML = "";
+        setError(null);
     } else if (getError()) {
-        const error = getError();
-        document.getElementById("errorMessage").innerHTML = `${error.title}: ${error.description}`;
+        setError(getError());
     } else {
-        document.getElementById("errorMessage").innerHTML = "";
+        setError(null);
     }
 
     $("#connectbutton").click(function() {
@@ -152,6 +151,14 @@ function getError() {
     }
 
     return result;
+}
+
+function setError(error) {
+    if (error) {
+        document.getElementById("errorMessage").innerHTML = `${error.title}: ${error.description}`;
+    } else {
+        document.getElementById("errorMessage").innerHTML = "";
+    }
 }
 
 // Parses the value of the given url param from the url
