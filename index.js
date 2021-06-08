@@ -24,9 +24,12 @@ $(document).ready(function() {
     const authCode = getAuthCode();        
     if (authCode && !accessToken) {
         getAccessToken(authCode);
+        document.getElementById("errorMessage").innerHTML = "";
     } else if (getError()) {
         const error = getError();
         document.getElementById("errorMessage").innerHTML = `${error.title}: ${error.description}`;
+    } else {
+        document.getElementById("errorMessage").innerHTML = "";
     }
 
     $("#connectbutton").click(function() {
