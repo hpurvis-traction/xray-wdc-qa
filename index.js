@@ -25,7 +25,8 @@ $(document).ready(function() {
     if (authCode && !accessToken) {
         getAccessToken(authCode);
     } else if (getError()) {
-        console.log(getError());
+        const error = getError();
+        document.getElementById("errorMessage").innerHTML = `${error.title}: ${error.description}`;
     }
 
     $("#connectbutton").click(function() {
