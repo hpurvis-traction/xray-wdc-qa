@@ -24,6 +24,11 @@ $(document).ready(function() {
     const authCode = getAuthCode();        
     if (authCode && !accessToken) {
         getAccessToken(authCode);
+        setError(null);
+    } else if (getError()) {
+        setError(getError());
+    } else {
+        setError(null);
     }
 
     $("#connectbutton").click(function() {
@@ -127,10 +132,41 @@ function updateUIWithAuthState(hasAuth) {
 
 // Parses the auth code from the url
 function getAuthCode() {
+    const authCode = getUrlParamValue("code");
+    return authCode;
+}
+
+// Parses the error from the url
+function getError() {
+    const error = getUrlParamValue("error");
+    let result; 
+
+    if (error) {
+        const description = getUrlParamValue("error_description");
+
+        result = {
+            title: error,
+            description: description
+        };        
+    }
+
+    return result;
+}
+
+function setError(error) {
+    if (error) {
+        document.getElementById("errorMessage").innerHTML = `${error.title}: ${error.description}`;
+    } else {
+        document.getElementById("errorMessage").innerHTML = "";
+    }
+}
+
+// Parses the value of the given url param from the url
+function getUrlParamValue(param) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const authCode = urlParams.get("code");
-    return authCode;
+    const value = urlParams.get(param);
+    return value;
 }
 
 // generates a PKCE challenge (code verifier and challenge)
