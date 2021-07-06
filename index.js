@@ -37,14 +37,16 @@ $(document).ready(function() {
     
     $("#getObjectCounts").click(function () {
         let scanId = document.getElementById("scanId").value;
-        tableau.connectionData = JSON.stringify(
-            {
-                "baseUrl": qaConfig.baseUrl,
-                "endpoint": "scans/" + scanId + "/recordCountByObject",
-            }
-        );
-        tableau.connectionName = "Xray Data - scan: " + scanId;
-        tableau.submit();
+        if (scanId) {
+            tableau.connectionData = JSON.stringify(
+                {
+                    "baseUrl": qaConfig.baseUrl,
+                    "endpoint": "scans/" + scanId + "/recordCountByObject",
+                }
+            );
+            tableau.connectionName = "Xray Data - scan: " + scanId;
+            tableau.submit();
+        }
     });
 });
 
