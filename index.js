@@ -123,7 +123,7 @@ function isTokenValid(accessToken, deleteIfInvalid) {
 function updateUIWithAuthState(hasAuth) {
     if (hasAuth) {
         $(".notsignedin").css("display", "none");
-        $(".signedin").css("display", "block");
+        $(".signedin").css("display", "inline-table");
     } else {
         $(".notsignedin").css("display", "block");
         $(".signedin").css("display", "none");
