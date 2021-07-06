@@ -32,6 +32,38 @@
         <button class="btn btn-success" id="getObjectCounts" type="submit" style="margin: auto;">Get X-Ray Object Counts</button>
       </p>
     </form>
+    
+    <table>
+      <tr>
+        <th>Endpoint Description</th>
+        <th>Parameters</th>
+        <th>Get Data</th>
+      </tr>
+      <tr>
+        <td>Get X-Ray Object Counts</td>      
+        <td>
+            <div style="margin: 10px;">Scan Id: <input id="scanId" type="number" required></div>
+        </td>
+        <td>
+          <button 
+            id="getObjectCounts" 
+            class="btn btn-success" 
+            type="submit" 
+            style="margin: auto;">Get Data</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Get X-Ray Object Counts For All Scans</td>      
+        <td></td>
+        <td>
+          <button 
+            id="getObjectCountsForScans" 
+            class="btn btn-success" 
+            type="submit" 
+            style="margin: auto;">Get Data</button>
+        </td>
+      </tr>
+    </table>
 
   </div>
 </body>
