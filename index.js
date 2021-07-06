@@ -48,6 +48,20 @@ $(document).ready(function() {
             tableau.submit();
         }
     });
+    
+    $("#getObjectCountsForScans").click(function () {
+        let dateParam = document.getElementById("dateInput1").value;
+        if (scanId) {
+            tableau.connectionData = JSON.stringify(
+                {
+                    "baseUrl": qaConfig.baseUrl,
+                    "endpoint": "scan/recordCountByObjectForScans",
+                }
+            );
+            tableau.connectionName = "Xray Data - " + dateParam;
+            tableau.submit();
+        }
+    });
 });
 
 // An on-click function for the connect to Xray API,

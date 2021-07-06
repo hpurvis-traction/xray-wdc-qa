@@ -54,14 +54,18 @@
       </tr>
       <tr>
         <td>Get X-Ray Object Counts For All Scans</td>      
-        <td>Returns the record counts for each object across all scans the user can access</td>      
-        <td></td>
-        <td>
-          <button 
+        <td>Returns the record counts for each object across all scans you have access to</td>      
+        <form>
+          <td>
+            <div style="margin: 10px;">Date: <input id="dateInput1" type="date" required></div>
+          </td>
+          <td>
+            <button 
             id="getObjectCountsForScans" 
             class="btn btn-success" 
             type="submit">Get Data</button>
-        </td>
+          </td>
+        </form>
       </tr>
     </table>
 
