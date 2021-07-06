@@ -11,10 +11,10 @@
     <script src="https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js" type="text/javascript"></script>
     <script src="modules/jwt-decode/jwt-decode.js" type="text/javascript"></script>
     <script src="./index.js" type="text/javascript"></script>
-
 </head>
 
 <body>
+  <!-- If in development show this, if not comment out -->
   <div class="alert">
     <strong>Warning! </strong>This site is currently under development. It may not function as expected.
   </div>
@@ -30,13 +30,6 @@
     <p id="errorMessage" class="error"></p>
     
     <!-- View once signed in -->
-    <form class="signedin">
-      <div style="margin: 10px;">Scan Id: <input id="scanId" type="number" required></div>
-      <p>
-        <button class="btn btn-success" id="getObject" type="submit">Get X-Ray Object Counts</button>
-      </p>
-    </form>
-    
     <table class="signedin">
       <tr>
         <th>Endpoint</th>
