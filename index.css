@@ -8,7 +8,18 @@
     color: white;
     margin-bottom: 15px;
     text-align: center;
-  }
+}
+
+.section {
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    max-width: 300px"
+}
+
+button {
+    margin:auto;
+}
 
 table {
     font-family: arial, sans-serif;
